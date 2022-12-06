@@ -25,36 +25,35 @@ void renderScene(GLFWwindow* window) {
 
 	GLfloat vertices[] = {
 
-		//front triangle			//Texture chords	// Colors
-		 0.0f,  0.7f, 0.0f,			0.0f, 0.5f,			0.0f,  1.0f, 1.0f,	// 0
-		-1.0f, -1.0f, 1.0f,			1.0f, 1.0,			1.00, 1.00, 0.00,	// 1
-		 1.0f, -1.0f, 1.0f, 		1.0f, 0.0f,			0.94, 0.00, 1.00,	// 2
-														
-		//right triangle								
-		0.0f,  0.7f,  0.0f, 		0.0f, 0.5f,			0.0f,  1.0f, 1.0f,	// 3
-		1.0f, -1.0f,  1.0f,			1.0f, 1.0,			1.00, 1.00, 0.00,	// 4
-		1.0f, -1.0f, -1.0f,			1.0f, 0.0f,			0.94, 0.00, 1.00,	// 5
-														
-		//back triangle									
-		 0.0f,  0.7f,  0.0f, 		0.0f, 0.5f,			0.0f,  1.0f, 1.0f,	// 6
-		 1.0f, -1.0f, -1.0f,		1.0f, 1.0,			0.94, 0.00, 1.00,	// 7
-		-1.0f, -1.0f, -1.0f,		1.0f, 0.0f,			1.00, 1.00, 0.00,	// 8
-														
-		//left triangle									
-		 0.0f,  0.7f,  0.0f, 		0.0f, 0.5f,			0.0f,  1.0f, 1.0f,	// 9
-		-1.0f, -1.0f, -1.0f,		1.0f, 1.0,			1.00, 1.00, 0.00,	// 10
-		-1.0f, -1.0f,  1.0f,		1.0f, 0.0f,			0.94, 0.00, 1.00,	// 11
-														
-		//bottom triangle								
-		-1.0f, -1.0f,  1.0f,		0.5f, 0.0f,			0.0f,  1.0f, 1.0f,	// 12
-		 1.0f, -1.0f,  1.0f,		1.0f, 1.0f,			0.0f,  1.0f, 0.63f,	// 13
-		-1.0f, -1.0f, -1.0f,		0.0f, 1.0f,			0.59f, 0.0f, 1.0f,	// 14
-																	   
-		//bottom triangle right										   
-		0.0f, 0.0f, -1.0f,			0.5f, 0.0f,			0.0f,  1.0f, 1.0f,	// 15
-		0.0f, 0.0f,  0.0f,			1.0f, 1.0f,			0.0f,  1.0f, 0.63f,	// 16
-		0.0f, 0.0f,  0.0f,			0.0f, 1.0f,			0.59f, 0.0f, 1.0f,	// 17
-
+		//front triangle		// Colors
+		 0.0f,  0.7f, 0.0f,		0.0f,  1.0f, 1.0f,	// 0
+		-1.0f, -1.0f, 1.0f,		0.0f,  1.0f, 1.0f,	// 1
+		 1.0f, -1.0f, 1.0f, 	0.0f,  1.0f, 1.0f,	// 2
+								
+		//right triangle		
+		0.0f,  0.7f,  0.0f, 	1.00, 1.00, 0.00,	// 3
+		1.0f, -1.0f,  1.0f,		1.00, 1.00, 0.00,	// 4
+		1.0f, -1.0f, -1.0f,		1.00, 1.00, 0.00,	// 5
+								
+		//back triangle			
+		 0.0f,  0.7f,  0.0f, 	0.94, 0.00, 1.00,	// 6
+		 1.0f, -1.0f, -1.0f,	0.94, 0.00, 1.00,	// 7
+		-1.0f, -1.0f, -1.0f,	0.94, 0.00, 1.00,	// 8
+								
+		//left triangle			
+		 0.0f,  0.7f,  0.0f, 	0.00, 0.98, 0.51,	// 9
+		-1.0f, -1.0f, -1.0f,	0.00, 0.98, 0.51,	// 10
+		-1.0f, -1.0f,  1.0f,	0.00, 0.98, 0.51,	// 11
+								
+		//bottom triangle		
+		-1.0f, -1.0f,  1.0f,	0.0f,  1.0f, 1.0f,	// 12
+		 1.0f, -1.0f,  1.0f,	0.0f,  1.0f, 0.63f,	// 13
+		-1.0f, -1.0f, -1.0f,	0.59f, 0.0f, 1.0f,	// 14
+								
+		//bottom triangle right	
+		0.0f, 0.0f, -1.0f,		0.0f,  1.0f, 1.0f,	// 15
+		0.0f, 0.0f,  0.0f,		0.0f,  1.0f, 0.63f,	// 16
+		0.0f, 0.0f,  0.0f,		0.59f, 0.0f, 1.0f,	// 17
 	};
 
 	GLuint indices[] = {
@@ -86,9 +85,6 @@ void renderScene(GLFWwindow* window) {
 	}
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 	glGenerateMipmap(GL_TEXTURE_2D);
-	
-	glBindTexture(GL_TEXTURE_2D, 0);
-	SOIL_free_image_data(image);
 
 	// Generating buffer objects
 	GLuint VBO, VAO, EBO;
@@ -107,16 +103,12 @@ void renderScene(GLFWwindow* window) {
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW); 
 
 	// Position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
 
 	// Color attribute
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(5 * sizeof(GLfloat)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
-
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
-	glEnableVertexAttribArray(2);
-
 
 	glBindVertexArray(0);
 
@@ -128,40 +120,52 @@ void renderScene(GLFWwindow* window) {
 	{
 		glfwPollEvents();
 
-		glClearColor(1, 1, 1, 1);
+		glClearColor(0, 0, 0, 0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texture);
 
 		my_shader.Use();
 
-		// Create transformations
-		glm::mat4 model = glm::mat4(1);
-		glm::mat4 view  = glm::mat4(1);
-		glm::mat4 projection = glm::ortho(0.0f, 100.0f, 0.0f, 600.0f, 0.1f, 100.0f);
-		glm::mat4 transform = glm::mat4(1);
-
-		model = glm::rotate(model, 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
-		projection = glm::perspective(45.0f, (GLfloat)WIDTH / (GLfloat)HEIGHT, 0.1f, 100.0f);
-		transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 1.6f, glm::vec3(0.0f, 1.0f, 0.0f));
-
-		// Get their uniform location
-		GLint modelLoc = glGetUniformLocation(my_shader.Program, "model");
-		GLint viewLoc = glGetUniformLocation(my_shader.Program, "view");
-		GLint projLoc = glGetUniformLocation(my_shader.Program, "projection");
-		GLint transformLoc = glGetUniformLocation(my_shader.Program, "transform");
-
-		// Pass them to the shaders
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
-		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
-
 		// Draw container
 		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT, 0);
+
+		for (GLuint i = 0; i < 3; i++)
+		{
+
+			// Create transformations
+			glm::mat4 model = glm::mat4(1);
+			glm::mat4 view = glm::mat4(1);
+			glm::mat4 projection = glm::ortho(0.0f, 100.0f, 0.0f, 600.0f, 0.1f, 100.0f);
+			glm::mat4 transform = glm::mat4(1);
+
+			model = glm::rotate(model, 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+
+			if (i == 0)
+				view = glm::translate(view, glm::vec3(3.0f, -0.2f, -5.5f));
+			else if (i == 1)
+				view = glm::translate(view, glm::vec3(-3.0f, -0.2f, -5.5f));
+			else if (i == 2)
+				view = glm::translate(view, glm::vec3(0.0f, -0.2f, -5.5f));
+
+			projection = glm::perspective(45.0f, (GLfloat) WIDTH / (GLfloat) HEIGHT, 0.1f, 100.0f);
+			transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 1.2f, glm::vec3(0.0f, 1.0f, 0.0f));
+
+			// Get their uniform location
+			GLint modelLoc = glGetUniformLocation(my_shader.Program, "model");
+			GLint viewLoc = glGetUniformLocation(my_shader.Program, "view");
+			GLint projLoc = glGetUniformLocation(my_shader.Program, "projection");
+			GLint transformLoc = glGetUniformLocation(my_shader.Program, "transform");
+			//GLint lightPosLoc = glGetUniformLocation(lightingShader.Program, "lightPos");
+
+			// Pass them to the shaders
+			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+			glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+			glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+			glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+			/*glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);*/
+
+			glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT, 0);
+		}
+
 		glBindVertexArray(0);
 
 		// Swap the screen buffers

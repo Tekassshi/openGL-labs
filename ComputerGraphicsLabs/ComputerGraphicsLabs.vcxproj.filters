@@ -57,5 +57,8 @@
     <Text Include="3D_Pyramid_Backup.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="Main_cpp_backup.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
 </Project>
